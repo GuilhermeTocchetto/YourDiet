@@ -18,20 +18,7 @@ CREATE TABLE usuarios (
   altura_cm DECIMAL(5,2) NOT NULL,
 
   sexo ENUM('Masculino','Feminino','Outro') NOT NULL,
-  nivel_atividade ENUM(
-    'Sedentario',
-    'Leve',
-    'Moderado',
-    'Ativo',
-    'Muito ativo'
-  ) NOT NULL,
   
-  meta ENUM(
-	'Perder Peso',
-    'Ganhar Peso',
-    'Manter Peso'
-  ) NOT NULL,
-
   criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -159,7 +146,6 @@ INSERT INTO usuarios (
 );
 
 
--- Copiando dados para tabela alimentos dados encontrados em sistema_tabela_nutricional.ibges: ~10.524 rows (aproximadamente)
 INSERT INTO alimentos (Codigo, descricao_do_alimento, imagem, Categoria, Codigo_de_preparacao, descricao_da_preparacao, Energia_kcal, Proteina_g, Lipidios_totais_g, Carboidrato_g, Fibra_alimentar_total_g, Colesterol_mg, AG_saturados_g, AG_mono_g, AG_poli_g, AG_linoleico_g, AG_linolenico_g, AG_trans_total_g, Acucar_total_g, Acucar_de_adicao_g, Calcio_mg, Magnesio_mg, Manganes_mg, Fosforo_mg, Ferro_mg, Sodio_mg, Sodio_de_adicao_mg, Potassio_mg, Cobre_mg, Zinco_mg, Selenio_mcg, Retinol_mcg, Vitamina_A_RAE_mcg, Tiamina_mg, Riboflavina_mg, Niacina_mg, Niacina_NE_mg, Piridoxina_mg, Cobalamina_mcg, Folato_DFE_mcg, Vitamina_D_mcg, Vitamina_E_mg, Vitamina_C_mg) VALUES
 	(6300101, 'Arroz','https://tse3.mm.bing.net/th/id/OIP.dt0gAzPe9CPeFdYi4N0l1QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3', 'Cereais e leguminosas', NULL, 'Não se aplica', '135,62', '2,50', '1,20', '27,78', '1,55', '-', '0,35', '0,22', '0,56', '0,56', '0,07', '0,01', '-', '-', '3,51', '2,23', '0,29', '17,77', '0,08', '1,19', '382,00', '14,53', '0,01', '0,49', '0,45', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '0,08', '-'),
 	(6300201, 'Arroz integral', 'https://tse1.mm.bing.net/th/id/OIP.dkazfPQXFF07Y58Aqz5agQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3', 'Cereais e leguminosas', 99, 'Não se aplica', '130,95', '2,56', '1,97', '25,56', '2,72', '-', '0,45', '0,62', '0,86', '0,80', '0,08', '0,01', '-', '-', '5,15', '58,13', '0,62', '104,82', '0,26', '1,23', '282,00', '74,42', '0,02', '0,68', '0,45', '-', '-', '0,08', '-', '-', '-', '0,08', '-', '-', '-', '0,08', '-'),
