@@ -6,7 +6,7 @@ require_once "config/conexao.php";
 $dados = json_decode(file_get_contents("php://input"), true);
 
 $nome  = trim($dados["nome"] ?? null);
-$email = trim($dados["email"] ?? null);
+$email = trim($dados["email"] ?? null); 
 $senha = $dados["senha"] ?? null;
 $data_nascimento = $dados['data_nascimento'] ?? null;
 $peso_kg         = $dados['peso_kg'] ?? null;
@@ -17,7 +17,7 @@ $meta = $dados['meta'] ?? null;
 
 
     //verificar se todos os dados foram preenchidos
-    
+
     if (!$nome || !$email || !$senha !$data_nascimento
         || !$peso_kg || !$altura_cm || !$sexo || !$nivel_atividade || !$meta) 
         {

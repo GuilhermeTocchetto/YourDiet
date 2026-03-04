@@ -1,29 +1,18 @@
 import { chamadaURL } from "./url";
 
-const nome = "";
-const email= "";
-const senha= "";
-const data_nascimento= "";
-const peso = "";
-const altura ="";
-const sexo = "";
+//Inserir o cadastro no btn (cadastrar) no cadastro.html
+async function cadastrar() {
+    const dados = {
+        nome: document.getElementById("nome").value.trim,
+    } 
+}
 
 
 try {
     const result = await chamadaURL('cadastro.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            nome,
-            email,
-            senha,
-            data_nascimento,
-            peso_kg: Number(peso),
-            altura_cm: Number(altura),
-            sexo,
-            nivel_atividade: nivelAtividade,
-            meta: meta
-        }),
+        body: JSON.stringify(dados),
     });
 
     if (!result.success) {
