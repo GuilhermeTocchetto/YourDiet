@@ -51,6 +51,7 @@ $meta = $dados['meta'] ?? null;
     }
 
     // verifica se email já existe
+
     $sql = "SELECT id FROM usuarios WHERE email = :email";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":email", $email);
@@ -64,36 +65,37 @@ $meta = $dados['meta'] ?? null;
         exit;
     }
 
-// cria usuário
-$hash = password_hash($senha, PASSWORD_DEFAULT);
+    // cria usuário
 
-$sql = "
-    INSERT INTO usuarios (nome, email, senha, data_nascimento, peso_kg, altura_cm, sexo, nivel_atividade, meta)
-    VALUES (:nome, :email, :senha, :data_nascimento, :peso_kg, :altura_cm, :sexo, :nivel_atividade, :meta)
-";
+        $hash = password_hash($senha, PASSWORD_DEFAULT);
 
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(":nome", $nome);
-$stmt->bindValue(":email", $email);
-$stmt->bindValue(":senha", $hash);
-$stmt->bindValue(":data_nascimento", $data_nascimento);
-$stmt->bindValue(":peso_kg", $peso_kg);
-$stmt->bindValue(":altura_cm", $altura_cm);
-$stmt->bindValue(":sexo", $sexo);
-$stmt->bindValue(":nivel_atividade", $nivel_atividade);
-$stmt->bindValue(":meta", $meta);
+        $sql = "
+            INSERT INTO usuarios (nome, email, senha, data_nascimento, peso_kg, altura_cm, sexo, nivel_atividade, meta)
+            VALUES (:nome, :email, :senha, :data_nascimento, :peso_kg, :altura_cm, :sexo, :nivel_atividade, :meta)
+        ";
 
-$stmt->execute();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(":nome", $nome);
+        $stmt->bindValue(":email", $email);
+        $stmt->bindValue(":senha", $hash);
+        $stmt->bindValue(":data_nascimento", $data_nascimento);
+        $stmt->bindValue(":peso_kg", $peso_kg);
+        $stmt->bindValue(":altura_cm", $altura_cm);
+        $stmt->bindValue(":sexo", $sexo);
+        $stmt->bindValue(":nivel_atividade", $nivel_atividade);
+        $stmt->bindValue(":meta", $meta);
 
-echo json_encode([
-    "success" => true,
-    "usuario" => [
-        "id" => $pdo->lastInsertId(),
-        "nome" => $nome,
-        "email" => $email,
-        "sexo" => $sexo,
-        "nivel_atividade" => $nivel_atividade,
-        "meta" => $meta
-    ]
-]);
+        $stmt->execute();
+
+        echo json_encode([
+            "success" => true,
+            "usuario" => [
+                "id" => $pdo->lastInsertId(),
+                "nome" => $nome,
+                "email" => $email,
+                "sexo" => $sexo,
+                "nivel_atividade" => $nivel_atividade,
+                "meta" => $meta
+            ]
+        ]);
 
