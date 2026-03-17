@@ -9,17 +9,14 @@ $nome  = trim($dados["nome"] ?? null);
 $email = trim($dados["email"] ?? null); 
 $senha = $dados["senha"] ?? null;
 $data_nascimento = $dados['data_nascimento'] ?? null;
-$peso_kg         = $dados['peso_kg'] ?? null;
-$altura_cm       = $dados['altura_cm'] ?? null;
 $sexo            = $dados['sexo'] ?? null;
-$nivel_atividade = $dados['nivel_atividade'] ?? null;
 $meta = $dados['meta'] ?? null;
 
 
     //verificar se todos os dados foram preenchidos
 
     if (!$nome || !$email || !$senha !$data_nascimento
-        || !$peso_kg || !$altura_cm || !$sexo || !$nivel_atividade || !$meta) 
+        || !$sexo || !$meta) 
         {
         echo json_encode([
             "success" => false,
@@ -50,7 +47,7 @@ $meta = $dados['meta'] ?? null;
         exit;
     }
 
-    // verifica se email já existe
+    //Verifica se email já existe
 
     $sql = "SELECT id FROM usuarios WHERE email = :email";
     $stmt = $pdo->prepare($sql);
@@ -65,7 +62,7 @@ $meta = $dados['meta'] ?? null;
         exit;
     }
 
-    // cria usuário
+    //Criação do usuário
 
         $hash = password_hash($senha, PASSWORD_DEFAULT);
 

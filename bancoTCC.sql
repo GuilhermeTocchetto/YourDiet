@@ -18,6 +18,7 @@ CREATE TABLE usuarios (
   altura_cm DECIMAL(5,2) NOT NULL,
 
   sexo ENUM('Masculino','Feminino','Outro') NOT NULL,
+  meta VARCHAR NOT NULL,
   
   criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -128,10 +129,7 @@ INSERT INTO usuarios (
   senha,
   nome,
   data_nascimento,
-  peso_kg,
-  altura_cm,
   sexo,
-  nivel_atividade,
   meta
 ) VALUES (
   'teste@yourdiet.com',

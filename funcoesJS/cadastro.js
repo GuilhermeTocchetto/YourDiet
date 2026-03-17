@@ -4,6 +4,8 @@ import { chamadaURL } from "./url";
 async function cadastrar() {
     const dados = {
         nome: document.getElementById("nome").value.trim,
+        nome: document.getElementById("email").value.trim,
+        nome: document.getElementById("senha").value.trim,
     } 
 }
 
