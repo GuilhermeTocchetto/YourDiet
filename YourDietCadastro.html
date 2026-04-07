@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YourDiet</title>
+  <link rel="stylesheet" href="YourDietCadastro.css" />
+
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  
+  
+
+  <div class="main">
+    <div class="container">
+      <div class="left">
+  <div class="header">
+
+    <img class="logo" src="yourdietlogo.png" alt="YourDiet Logo" />
+
+    <nav>
+      <a href="#" onclick="window.location.href='YourDietSobreNos.html'" >SOBRE NÓS</a>
+      <a href="#" onclick="window.location.href='YourDietContato.html'">CONTATO</a>
+      <a href="#" onclick="window.Location.href='YourDiet.html'"">LOGIN</a>
+    </nav>
+
+    <div class="imagem-box">
+    <img class="imagem" src="fotoparaareadeloginecadastro.png" />
+  </div>
+
+  </div>
+</div>
+      <div class="right">
+        <h2>Cadastrar</h2>
+        <form class="login-form" onsubmit="return false;">
+          <label for="usuario" class="sr-only">Nome de Usuário</label>
+          <input id="usuario" type="text" placeholder="Nome de Usuário" />
+
+          <label for="email" class="sr-only">Endereço de Email</label>
+          <input id="email" type="email" placeholder="Endereço de Email" />
+
+          <label for="senha" class="sr-only">Senha</label>
+          <input id="senha" type="password" placeholder="Senha" />
+
+          <label for="senha" class="sr-only">Confirme sua Senha</label>
+          <input id="senha" type="password" placeholder="Confirme sua Senha" /> 
+
+          <button type="button" class="btn primary" >Criar Conta</button>
+          <button type="button" class="btn ghost" onclick="window.location.href='YourDiet.html'">Entrar</button>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
