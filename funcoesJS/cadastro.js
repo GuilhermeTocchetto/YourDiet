@@ -1,32 +1,48 @@
-import { chamadaURL } from "./url";
+import { chamadaURL } from "./url.js"; 
 
-//Inserir o cadastro no btn (cadastrar) no cadastro.html
-async function cadastrar() {
-    const dados = {
-        nome: document.getElementById("nome").value.trim,
-        nome: document.getElementById("email").value.trim,
-        nome: document.getElementById("senha").value.trim,
-    } 
-}
+document.getElementById("form-cadastro").addEventListener("submit", cadastrar);
 
+async function cadastrar(evento) {
+    evento.preventDefault(); // Evita que a página recarregue
 
-try {
-    const result = await chamadaURL('cadastro.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dados),
-    });
+    const nome = document.getElementById("usuario").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+    const confirma_senha = document.getElementById("confirma_senha").value.trim();
+    const data_nascimento = document.getElementById("data_nascimento").value;
+    const sexo = document.getElementById("sexo").value;
 
-    if (!result.success) {
-        Alert.alert('Erro', result.message || 'Erro ao cadastrar');
+    // Validação simples de senha
+    if (senha !== confirma_senha) {
+        alert("As senhas não coincidem!");
         return;
     }
 
-    Alert.alert('Sucesso', 'Usuário cadastrado com sucesso!');
-    if (result.usuario) {
-        onLogin(result.usuario);
-    }
+    const dados = {
+        nome: nome,
+        email: email,
+        senha: senha,
+        data_nascimento: data_nascimento,
+        sexo: sexo
+    };
 
-} catch (e) {
-    Alert.alert('Erro', 'Falha ao conectar com o servidor');
+    try {
+        const result = await chamadaURL('cadastro.php', {
+            method: 'POST',
+            body: JSON.stringify(dados)
+        });
+
+        if (result.success === false) {
+            alert('Erro: ' + (result.message || 'Erro ao cadastrar'));
+            return;
+        }
+
+        alert('Usuário cadastrado com sucesso!');
+        // Redireciona para a tela de login
+        window.location.href = 'YourDiet.html';
+
+    } catch (e) {
+        alert('Erro: Falha ao conectar com o servidor.');
+        console.error(e);
+    }
 }
