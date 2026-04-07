@@ -4,15 +4,19 @@ require_once "config/conexao.php";
 
 $usuario_id = $_GET['id'] ?? null;
 
+if ($usuario_id == null) {
+    echo json_encode(["erro" => "ID do usuário é obrigatório"]);
+    exit;
+}
+
+
 $sql = "
     SELECT   email,
     nome,
     data_nascimento,
-    altura_cm,
-    peso_kg,
-    nivel_atividade,
     sexo,
-    meta
+    meta,
+    foto
     FROM usuarios
     WHERE id = :id
 ";

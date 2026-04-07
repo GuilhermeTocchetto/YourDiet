@@ -15,7 +15,7 @@ $camposObrigatorios = [
   'usuario_id',
   'alimento_id',
   'data_consumo',
-  'quantidade_gramas'
+  'quantidade_gramas',
 ];
 
 foreach ($camposObrigatorios as $campo) {
@@ -30,6 +30,7 @@ $usuario_id        = (int) $dados['usuario_id'];
 $alimento_id       = (int) $dados['alimento_id'];
 $data_consumo      = $dados['data_consumo'];
 $quantidade_gramas = (float) $dados['quantidade_gramas'];
+
 
 if ($quantidade_gramas <= 0) {
   http_response_code(400);
